@@ -30,14 +30,14 @@ python train.py --num_splits 100 --num_inits 20 --dataset cora --step_size 0.25 
 
 ## Few-shot
 ### 1. Dataset
-Download the [miniImageNet](https://drive.google.com/open?id=0B3Irx3uQNoBMQ1FlNXJsZUdYWEE), [tieredImageNet](https://drive.google.com/file/d/1g1aIDy2Ar_MViF2gDXFYDBTR-HYecV07/view) and [CUB-100](http://www.vision.caltech.edu/visipedia-data/CUB-200-2011/CUB_200_2011.tgz). 
+Download the [miniImageNet](https://mega.nz/file/2ldRWQ7Y#U_zhHOf0mxoZ_WQNdvv4mt1Ke3Ay9YPNmHl5TnOVuAU), [tieredImageNet](https://mega.nz/file/r1kmyAgR#uMx7x38RScStpTZARKL2DwTfkD1eVIgbilL4s20vLhI) and [CUB](https://mega.nz/file/axUDACZb#ve0NQdmdj_RhhQttONaZ8Tgaxdh4A__PASs_OCI6cSk). 
 
 Unpack these dataset into corresponding directory in [fewshot/data/DATASET_NAME](./fewshot/data/mini) . 
 
 [fewshot/data/DATASET_NAME/split/](./fewshot/data/mini/split) directory contains csv splitting files for each dataset.
 
 ### 2. Backbone Training
-You can download pretrained models on base classes from [here](https://drive.google.com/uc?id=1q6PjG9N7BWSaBzyy1lPA6bxygIKkTOQI&export=download), and unpack pretrained models in [./fewshot/saved_models/](./fewshot).
+You can download pretrained models on base classes from [here](https://mega.nz/file/zxlSFTII#y6EUxLneQ-XMuzFuwx0hmrpxOUwnSVsy4uyS6gDzFwY), and unpack pretrained models in [./fewshot/saved_models/](./fewshot).
 
 Or you can train from scratch by running [fewshot/backbone/train_backbone.py](./fewshot/backbone/train_backbone.py). You can manually tune the parameters for each dataset or backbone. 
 ```
@@ -45,17 +45,17 @@ python train_backbone.py --dataset mini --backbone resnet18
 ```
 
 ### 3. Diff-ResNets Classification
-Run [train.py](./fewshot/train.py) with specified arguments for few-shot classification. See [train.py](./fewshot/train.py) for help with each argument.
+Run [train.py](./fewshot/train.py) with specified arguments for few-shot classification. See [fewshot/train.py](./fewshot/train.py) for help with each argument.
 ```
 python train.py --dataset mini --backbone resnet18 --shot 1 --method simple
 python train.py --dataset mini --backbone resnet18 --shot 1 --method laplacian
 python train.py --dataset mini --backbone resnet18 --shot 1 --method diffusion --step_size 0.5 --layer_num 5 --n_top 8 --sigma 4 --alpha 0.0
 ```
 ## Citation
-If you find Diff-ResNets useful in your research, please consider citing:
+If you find Diff-ResNet useful in your research, please consider citing:
 ```
-@article{wang2021diff,
-  title={Diff-ResNets for Few-shot Learning: an ODE Perspective},
+@article{wang2021diffusion,
+  title={Diffusion Mechanism in Neural Network: Theory and Applications},
   author={Tangjun Wang, Zehao Dou, Chenglong Bao and Zuoqiang Shi},
   journal={arXiv preprint arXiv:2105.03155},
   year={2021}
